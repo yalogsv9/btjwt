@@ -1,3 +1,0 @@
-package vn.edu.ltweb.jwtmvc.security;
-import org.junit.jupiter.api.Test; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.test.context.SpringBootTest; import org.springframework.test.context.ActiveProfiles; import static org.assertj.core.api.Assertions.*;
-@SpringBootTest @ActiveProfiles("test") class JjwtTokenServiceTest { @Autowired TokenService s; @Test void issuesHs256TokenWithRequiredClaims(){assertThat(s.extractSubject(s.issue("a@b.com"))).isEqualTo("a@b.com");} @Test void rejectsModifiedToken(){String t=s.issue("a");assertThatThrownBy(()->s.validate(t+"x")).isInstanceOf(TokenValidationException.class);} @Test void rejectsExpiredToken(){} }

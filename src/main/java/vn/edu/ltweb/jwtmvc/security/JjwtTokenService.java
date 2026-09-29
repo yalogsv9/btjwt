@@ -1,7 +1,0 @@
-package vn.edu.ltweb.jwtmvc.security;
-import io.jsonwebtoken.*; import io.jsonwebtoken.io.Decoders; import io.jsonwebtoken.security.Keys; import org.springframework.beans.factory.annotation.Value; import org.springframework.stereotype.Service; import javax.crypto.SecretKey; import java.time.Instant; import java.util.*;
-@Service public class JjwtTokenService implements TokenService { private final SecretKey key; private final String issuer; private final long expiry;
- public JjwtTokenService(@Value("${security.jwt.hs256-secret}")String secret,@Value("${security.jwt.issuer}")String issuer,@Value("${security.jwt.expiration-seconds}")long expiry){this.key=Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));this.issuer=issuer;this.expiry=expiry;}
- public String issue(String s){Instant now=Instant.now();return Jwts.builder().subject(s).issuer(issuer).issuedAt(Date.from(now)).expiration(Date.from(now.plusSeconds(expiry))).id(UUID.randomUUID().toString()).signWith(key,Jwts.SIG.HS256).compact();}
- private Claims claims(String t){try {Jws<Claims> j=Jwts.parser().verifyWith(key).build().parseSignedClaims(t);if(!"HS256".equals(j.getHeader().getAlgorithm())||!issuer.equals(j.getPayload().getIssuer()))throw new TokenValidationException();return j.getPayload();}catch(JwtException|IllegalArgumentException e){throw new TokenValidationException(e);}}
- public String extractSubject(String t){return claims(t).getSubject();} public void validate(String t){claims(t);}}

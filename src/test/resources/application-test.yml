@@ -7,6 +7,7 @@ spring:
     hibernate.ddl-auto: create-drop
 security:
   jwt:
-    hs256-secret: c3VwZXItc2VjdXJlLXRlc3Qta2V5LXdpdGgtYXQtbGVhc3QtMzItYnl0ZXMhISE=
+    private-key-path: classpath:keys/test-private.pem
+    public-key-path: classpath:keys/test-public.pem
     issuer: jwt-mvc-test
     expiration-seconds: 900

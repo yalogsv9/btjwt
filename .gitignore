@@ -3,6 +3,9 @@ docs/
 *.md
 application-local.yml
 keys/
+!src/test/resources/keys/
+!src/test/resources/keys/test-private.pem
+!src/test/resources/keys/test-public.pem
 target/
 .idea/
 .vscode/

@@ -2,4 +2,5 @@
 # DB_URL=jdbc:sqlserver://localhost:1433;databaseName=jwtmvc;encrypt=true;trustServerCertificate=true
 # DB_USERNAME=your_user
 # DB_PASSWORD=your_password
-# JWT_HS256_SECRET=a-base64-encoded-at-least-32-byte-secret
+# JWT_PRIVATE_KEY_PATH=C:/secure/keys/private.pem
+# JWT_PUBLIC_KEY_PATH=C:/secure/keys/public.pem

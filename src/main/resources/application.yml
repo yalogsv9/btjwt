@@ -7,6 +7,7 @@ spring:
     hibernate.ddl-auto: update
 security:
   jwt:
-    hs256-secret: ${JWT_HS256_SECRET}
+    private-key-path: file:${JWT_PRIVATE_KEY_PATH}
+    public-key-path: file:${JWT_PUBLIC_KEY_PATH}
     issuer: ${JWT_ISSUER:jwt-mvc}
     expiration-seconds: ${JWT_EXPIRATION_SECONDS:900}
