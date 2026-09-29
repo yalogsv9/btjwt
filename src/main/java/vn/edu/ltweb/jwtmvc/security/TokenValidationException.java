@@ -1,0 +1,1 @@
+package vn.edu.ltweb.jwtmvc.security; public class TokenValidationException extends RuntimeException { public TokenValidationException(){super();} public TokenValidationException(Throwable t){super(t);} }

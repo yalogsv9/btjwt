@@ -1,0 +1,8 @@
+# Design and planning artifacts are local-only for this assignment.
+docs/
+*.md
+application-local.yml
+keys/
+target/
+.idea/
+.vscode/

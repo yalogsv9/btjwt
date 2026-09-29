@@ -1,0 +1,2 @@
+package vn.edu.ltweb.jwtmvc.user; import org.springframework.security.core.Authentication; import org.springframework.web.bind.annotation.*; import java.util.List;
+@RestController @RequestMapping("/users") public class UserApiController {final UserService users; public UserApiController(UserService u){users=u;} @GetMapping("/me") UserResponse me(Authentication a){return users.response(users.findByEmail(a.getName()));} @GetMapping List<UserResponse> all(){return users.all();}}

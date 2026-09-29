@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate.ddl-auto: update
+security:
+  jwt:
+    hs256-secret: ${JWT_HS256_SECRET}
+    issuer: ${JWT_ISSUER:jwt-mvc}
+    expiration-seconds: ${JWT_EXPIRATION_SECONDS:900}

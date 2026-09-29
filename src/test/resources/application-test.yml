@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:jwtmvc;MODE=MSSQLServer;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate.ddl-auto: create-drop
+security:
+  jwt:
+    hs256-secret: c3VwZXItc2VjdXJlLXRlc3Qta2V5LXdpdGgtYXQtbGVhc3QtMzItYnl0ZXMhISE=
+    issuer: jwt-mvc-test
+    expiration-seconds: 900

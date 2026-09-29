@@ -1,0 +1,5 @@
+package vn.edu.ltweb.jwtmvc.user;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; import org.springframework.security.crypto.password.PasswordEncoder; import org.springframework.stereotype.Service; import java.util.List;
+@Service public class UserService { private final AppUserRepository repo; private final PasswordEncoder encoder=new BCryptPasswordEncoder();
+ public UserService(AppUserRepository r){repo=r;} public UserResponse register(RegisterRequest r){if(repo.findByEmail(r.email()).isPresent())throw new DuplicateEmailException(); return map(repo.save(new AppUser(r.fullName(),r.email(),encoder.encode(r.password()))));}
+ public AppUser findByEmail(String email){return repo.findByEmail(email).orElseThrow(()->new IllegalArgumentException("User not found"));} public List<UserResponse> all(){return repo.findAll().stream().map(this::map).toList();} public UserResponse response(AppUser u){return map(u);} public boolean passwordMatches(String raw,String hash){return encoder.matches(raw,hash);} private UserResponse map(AppUser u){return new UserResponse(u.getId(),u.getFullName(),u.getEmail(),u.getCreatedAt(),u.getUpdatedAt());}}
